@@ -1,0 +1,21 @@
+version: '3'
+services:
+  triton-server:
+    container_name: triton_phobert
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+      - "8002:8002"
+    volumes:
+      - ./model_repository:/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: tritonserver --model-repository=/models --backend-config=python,startup-timeout=120

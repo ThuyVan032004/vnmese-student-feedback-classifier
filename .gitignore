@@ -1,0 +1,12 @@
+**/__pycache__/*
+
+train_env/
+
+phobert-lora/
+phobert-lora-final/
+phobert-merged/
+
+**/LICENSE.txt/*
+
+**/model.onnx/*
+**/model.onnx.data/*
